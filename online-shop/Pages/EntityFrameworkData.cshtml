@@ -1,0 +1,25 @@
+﻿@page
+@model EntityFrameworkData
+@{
+    ViewBag.Title = "Web Service Data";
+}
+<h2>Orders from Web Service</h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Sposób płatności</th>
+        <th>Ilość zamówień</th>
+        <th>Wartość brutto</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var order in Model.EntityDto)
+    {
+        <tr>
+            <td>@order.PaymentMethod.ToString()</td>
+            <td>@order.OrderCount</td>
+            <td>@order.TotalGrossValue</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@page
+@model WebServiceData
+@{
+    ViewBag.Title = "Web Service Data";
+}
+<h2>Orders from Web Service</h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Store Name</th>
+        <th>City</th>
+        <th>Total Net Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.ApiDtos is not null)
+    {
+        @foreach (var order in Model.ApiDtos)
+        {
+            <tr>
+                <td>@order.StoreName</td>
+                <td>@order.City</td>
+                <td>
+                    @foreach (var position in order.OrderPositions)
+                    {
+                        <span>@position.Product.ProductCode</span>
+                        <br/>
+                    }
+                </td>
+                <td>@order.TotalNetValue</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
